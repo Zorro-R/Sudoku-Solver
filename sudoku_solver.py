@@ -1,5 +1,6 @@
-# Sudoku puzzle taken from websudoku.com
-board = [
+# Idea sparked by this post https://hackernoon.com/sudoku-and-backtracking-6613d33229af
+# Sudoku puzzle taken from https://www.websudoku.com/?level=1&set_id=1559770422
+board1 = [
     [5, 0, 0, 6, 0, 0, 0, 0, 0],
     [0, 0, 0, 8, 5, 2, 9, 0, 1],
     [1, 6, 0, 0, 0, 0, 2, 5, 8],
@@ -11,6 +12,19 @@ board = [
     [0, 0, 0, 0, 0, 9, 0, 0, 5]
 ]
 
+# Another sudoku puzzle taken from https://www.websudoku.com/?level=4&set_id=1044837704
+board2 = [
+    [0, 6, 0, 0, 0, 0, 0, 5, 4],
+    [0, 5, 7, 0, 0, 3, 9, 0, 0],
+    [0, 0, 0, 9, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 7, 0, 8, 0, 5],
+    [0, 0, 3, 1, 0, 4, 2, 0, 0],
+    [7, 0, 8, 0, 5, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 6, 4, 0, 0, 5, 2, 0],
+    [2, 4, 0, 0, 0, 0, 0, 1, 0]
+]
+
 
 def display_board(board):
     '''
@@ -18,8 +32,8 @@ def display_board(board):
     '''
     for y, row in enumerate(board):
         if y % 3 == 0:
-            print()
-            print()
+            print("\n---------------------")
+
         else:
             print()
         for x, value in enumerate(row):
@@ -27,11 +41,9 @@ def display_board(board):
                 print("|", end="")
             print(value, end="|")
     print()
+    print()
 
     return True
-
-
-display_board(board)
 
 
 def valid_entry(board, x, y, guess):
@@ -102,5 +114,16 @@ def recursive_backtracking(board):
                 return False
 
 
-recursive_backtracking(board)
-display_board(board)
+# Run backtracking algorithm on board 1
+print("Example 1")
+display_board(board1)
+recursive_backtracking(board1)
+print("Example 1 Solution")
+display_board(board1)
+
+# Run backtracking algorithm on board 2
+print("Example 2")
+display_board(board2)
+recursive_backtracking(board2)
+print("Example 2 Solution")
+display_board(board2)
